@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:59:19 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 18:33:06 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 20:03:42 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	Dog::makeSound( void ) const
 			+ this->brain->get_idea(this->__next_idea),
 		YELLOW
 	);
-	print_line(this->brain->get_idea(1), RED);
+}
+
+const std::string&	Dog::mostImportantThought( void ) const
+{
+	return (this->brain->get_idea(0));
 }
 
 void	Dog::emptyMind( void )
@@ -31,11 +35,10 @@ void	Dog::emptyMind( void )
 
 const Animal&	Dog::operator =	( const Animal& to_copy )
 {
-	print_line("Dog- Animal assignment Operator", YELLOW);
+	print_line("Dog- Animal Copy assignment Operator", YELLOW);
 
 	const Dog	*as_dog = dynamic_cast<const Dog *>(&to_copy);
 
-	// std::cout << "to_copy in func: " << as_dog << std::endl;
 	if (nullptr == as_dog)
 		this->Animal::operator=(to_copy);
 	else
