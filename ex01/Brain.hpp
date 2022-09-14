@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 10:33:24 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:20:53 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 18:29:52 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Brain
 private:
 	std::string					ideas[IDEAS_SIZE];
 public:
-			const	Brain&			operator	= 	(const Brain& br);
-									Brain			(const Brain& br);
+			const	Brain&			operator	= 	( const Brain& br );
+									Brain			( const Brain& br );
 									Brain			();
 	virtual							~Brain			();
 			const	std::string&	get_idea		( size_t idx ) const;

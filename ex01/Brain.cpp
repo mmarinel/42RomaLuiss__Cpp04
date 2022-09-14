@@ -6,14 +6,16 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 10:50:48 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:20:38 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 18:29:33 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Brain.hpp"
 
-const Brain&	Brain::operator	= 	(const Brain& br)
+const Brain&	Brain::operator	= 	( const Brain& br )
 {
+	print_line("Brain- Copy Assignment Operator", YELLOW);
+
 	for (int i = 0; i < IDEAS_SIZE; i++)
 		this->ideas[i].assign(br.ideas[i]);
 
@@ -28,7 +30,7 @@ Brain::Brain	( const Brain& br )
 Brain::Brain()
 {
 	for (int i = 0; i < IDEAS_SIZE; i++)
-		this->ideas[i].assign("");
+		this->ideas[i].assign("un-initialized");
 }
 
 Brain::~Brain()
@@ -39,7 +41,7 @@ Brain::~Brain()
 const std::string&	Brain::get_idea( size_t idx ) const
 {
 	if (idx < 0 || idx > IDEAS_SIZE - 1)
-		return (std::string());
+		return (this->ideas[IDEAS_SIZE - 1]);
 	else
 		return (this->ideas[idx]);
 }

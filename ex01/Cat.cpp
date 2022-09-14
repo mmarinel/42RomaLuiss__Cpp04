@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:09:22 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:33:15 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:21:23 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,37 @@
 
 void	Cat::makeSound( void ) const
 {
-	static	size_t	idea = -1;
+	this->__next_idea = (this->__next_idea + 1) % IDEAS_SIZE;
+	print_line(
+		"Meow.. ...thinking of "
+			+ this->brain->get_idea(this->__next_idea),
+		YELLOW
+	);
+}
 
-	idea = (idea + 1) % IDEAS_SIZE;
-	print_line("Meow..." + this->brain->get_idea(idea), YELLOW);
+void	Cat::emptyMind( void )
+{
+	for (size_t i = 0; i < IDEAS_SIZE; i++)
+		this->brain->set_idea("numb", i);
+}
+
+const Animal&	Cat::operator =	( const Animal& to_copy )
+{
+	const Cat	*as_cat = dynamic_cast<const Cat *>(&to_copy);
+
+	if (nullptr == as_cat)
+		this->Animal::operator=(to_copy);
+	else
+		this->operator=(*as_cat);
+	
+	return (*this);
 }
 
 const Cat&	Cat::operator	=	( const Cat& to_copy)
 {
 	print_line("Cat- Copy Assignment Operator", YELLOW);
 
+	this->__next_idea = -1;
 	this->type.assign(to_copy.type);
 	this->brain = to_copy.brain;
 
@@ -41,6 +62,7 @@ Cat::Cat()
 {
 	print_line("Cat- Default Constructor", BOLDGREEN);
 
+	this->__next_idea = -1;
 	this->type.assign("Cat");
 	this->brain = new Brain();
 

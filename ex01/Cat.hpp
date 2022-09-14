@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:07:57 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:03:15 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 16:19:54 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@
 class Cat : public Animal
 {
 private:
-	Brain*	brain;
+			Brain*	brain;
+	mutable int		__next_idea;
 public:
-			void	makeSound	( void ) const;
-	const	Cat&	operator =	( const Cat& to_copy );
-					Cat			( const Cat& to_copy );
-					Cat			();
-					~Cat		();
+					void	makeSound	( void ) const;
+					void	emptyMind	( void );
+	virtual	const	Animal&	operator =	( const Animal& to_copy );
+	virtual	const	Cat&	operator =	( const Cat& to_copy );
+							Cat			( const Cat& to_copy );
+							Cat			();
+							~Cat		();
 };
 
 

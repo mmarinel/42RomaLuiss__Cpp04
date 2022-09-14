@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:28:18 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 11:54:28 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:05:08 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ protected:
 public:
 	virtual			void			makeSound	( void ) const;
 			const	std::string&	getType		( void ) const;
-			const	Animal&			operator =	( const Animal& to_copy );
+	virtual	const	Animal&			operator =	( const Animal& to_copy );
 									Animal		( const Animal& to_copy );
 									Animal		();
 	virtual							~Animal		();
