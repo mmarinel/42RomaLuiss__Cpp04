@@ -6,43 +6,31 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 10:31:13 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 12:01:58 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
 #include <iostream>
 
-int	main( void )
+int	main()
 {
-	ClapTrap	usa("USA");
-	ScavTrap	russia("Rossija");
+	{
+		const Animal*	meta = new Animal();
+		const Animal*	j = new Dog();
+		const Animal*	i = new Cat();
+		std::cout << j->getType() << " " << std::endl;
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound();//*will output the cat sound!
+		j->makeSound();
+		meta->makeSound();
 
-	std::cout << std::endl;
-
-	russia.beRepaired(usa.getAttackDamage());
-	usa.attack(russia.getName());
-	russia.takeDamage(usa.getAttackDamage());
-	russia.beRepaired(usa.getAttackDamage());
-	russia.beRepaired(100);
-	usa.attack(russia.getName());
-	russia.takeDamage(usa.getAttackDamage());
-
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	usa.attack(russia.getName());
-
-	std::cout << std::endl;
-	russia.guardGate();
-	std::cout << std::endl;
+		delete meta;
+		delete j;
+		delete i;
+	}
 	return 0;
 }

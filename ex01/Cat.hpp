@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:07:57 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 11:34:57 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 12:03:15 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <string>
 # include <iostream>
 
+# include "Brain.hpp"
 # include "Animal.hpp"
 # include "utils.hpp"
 
 class Cat : public Animal
 {
 private:
-	/* data */
+	Brain*	brain;
 public:
 			void	makeSound	( void ) const;
 	const	Cat&	operator =	( const Cat& to_copy );
