@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 09:59:03 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/14 10:33:24 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/14 11:16:43 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef BRAIN_H
+# define BRAIN_H
 
-# include "../colors.hpp"
+# define IDEAS_SIZE 100
+
+# include <string>
 # include <iostream>
+# include "utils.hpp"
 
-	//* utils
+class Brain
+{
+private:
+	std::string					ideas[IDEAS_SIZE];
+public:
+			const	Brain&	operator	= 	(const Brain& br);
+							Brain			(const Brain& br);
+							Brain			();
+	virtual					~Brain			();
+};
 
-void	print_line(const char *str, const char *color);
-void	print_funcName(const char *funcName);
 
-
-#endif /* COMMON_UTILS_H */
+#endif /* BRAIN_H */

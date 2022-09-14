@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:07:57 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/12 17:41:48 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 11:48:29 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ class WrongCat : public WrongAnimal
 private:
 	/* data */
 public:
-	void	makeSound	( void ) const;
-			WrongCat	();
-			~WrongCat	();
+			void		makeSound	( void ) const;
+	const	WrongCat&	operator =	( const WrongCat& to_copy );
+						WrongCat	( const WrongCat& to_copy );
+						WrongCat	();
+						~WrongCat	();
 };
 
 

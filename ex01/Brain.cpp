@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 09:59:03 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/14 10:50:48 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/14 11:14:50 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "Brain.hpp"
 
-# include "../colors.hpp"
-# include <iostream>
+const Brain&	Brain::operator	= 	(const Brain& br)
+{
+	for (int i = 0; i < IDEAS_SIZE; i++)
+		this->ideas[i].assign(br.ideas[i]);
 
-	//* utils
+	return (*this);
+}
 
-void	print_line(const char *str, const char *color);
-void	print_funcName(const char *funcName);
+Brain::Brain	( const Brain& br )
+{
+	*this = br;
+}
 
+Brain::Brain()
+{
+	for (int i = 0; i < IDEAS_SIZE; i++)
+		this->ideas[i].assign("");
+}
 
-#endif /* COMMON_UTILS_H */
+Brain::~Brain()
+{
+	print_line("<<Brain Destroyed>>", BOLDRED);
+}

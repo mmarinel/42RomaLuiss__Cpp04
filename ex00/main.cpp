@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/12 17:42:43 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/14 11:52:51 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	main()
 		i->makeSound();//*will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
+
+		delete meta;
+		delete j;
+		delete i;
 	}
 	std::cout << "............................................................"
 		<< std::endl;
@@ -39,6 +43,9 @@ int	main()
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound();//!will output the ANIMAL sound!
 		meta->makeSound();
+
+		delete meta;
+		delete i;
 	}
 	return 0;
 }
