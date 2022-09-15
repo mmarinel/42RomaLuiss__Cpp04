@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:59:19 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 20:03:42 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 10:31:26 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	Dog::makeSound( void ) const
 	);
 }
 
-const std::string&	Dog::mostImportantThought( void ) const
+const std::string&	Dog::oneVeryImportantThought( void ) const
 {
 	return (this->brain->get_idea(0));
 }

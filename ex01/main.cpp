@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 19:54:02 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 10:43:10 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 
 # define ANIMALS 4
 
-static size_t	first_dog_occurence(Animal *animals[ANIMALS]);
+static int	first_dog_occurence(Animal *animals[ANIMALS]);
 //* end of static declarations
 
 int	main()
 {
 	Animal	*animals[ANIMALS];
 	Dog		copy;
+	int		first_dog_occ;
 
 	for (size_t i = 0; i < ANIMALS; i++)
 		if (i % 2 == 0)
@@ -32,6 +33,9 @@ int	main()
 		else
 			animals[i] = new Cat();
 
+//*********** Printing Animals ******************* //
+//*********************************************** //
+//*********************************************** //
 	for (size_t i = 0; i < ANIMALS; i++)
 	{
 		std::cout << YELLOW
@@ -39,41 +43,76 @@ int	main()
 			<< ": " << RESET;
 		animals[i]->makeSound();
 	}
-
-	std::cout
-		<< std::endl
-		<< CYAN
-		<< "Checking correctness of Deep Copy"
-		<< RESET
-		<< std::endl;
-
-	copy = *animals[first_dog_occurence(animals)];
-
-	std::cout << std::endl;
-	std::cout << "Orginal ideas[0]: ";
-	animals[first_dog_occurence(animals)]->makeSound();
-	std::cout << "Copy ideas[0]: ";
-	copy.makeSound();
 	std::cout << std::endl;
 
-	std::cout
-		<< CYAN
-		<< "Modifying the copy"
-		<< RESET
-		<< std::endl;
-	copy.emptyMind();
+//*********** Checking Deep Copy ******************* //
+//*********************************************** //
+//*********************************************** //
 
-	std::cout << "Orginal ideas[1]: ";
-	animals[first_dog_occurence(animals)]->makeSound();
-	std::cout << "Copy ideas[1]: ";
-	copy.makeSound();
+	first_dog_occ = first_dog_occurence(animals);
+	if (-1 != first_dog_occ)
+	{
+		copy = *animals[first_dog_occ];
+		std::cout
+			<< std::endl
+			<< CYAN
+			<< "Checking correctness of Deep Copy"
+			<< RESET;
+
+		//* 	Original Values ******************//
+		// ************************************** //
+		// ************************************** //
+		std::cout << std::endl;
+		std::cout
+			<< "Orginal animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< dynamic_cast<Dog *>(
+				animals[first_dog_occ]
+				)->oneVeryImportantThought()
+			<< std::endl
+			<< RESET;
+		std::cout
+			<< "Copy animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< copy.oneVeryImportantThought()
+			<< RESET
+			<< std::endl;
+		std::cout << std::endl;
+
+		std::cout
+			<< CYAN
+			<< "Modifying the copy"
+			<< RESET;
+		copy.emptyMind();
+
+		//* 	Modified Values ******************//
+		// ************************************** //
+		// ************************************** //
+		std::cout << std::endl;
+		std::cout
+			<< "Orginal animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< dynamic_cast<Dog *>(
+				animals[first_dog_occ]
+				)->oneVeryImportantThought()
+			<< std::endl
+			<< RESET;
+		std::cout
+			<< "Copy animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< copy.oneVeryImportantThought()
+			<< RESET
+			<< std::endl;
+		std::cout << std::endl;
+	}
 
 	for (size_t i = 0; i < ANIMALS; i++)
 		delete animals[i];
+
 	return 0;
 }
 
-static size_t	first_dog_occurence(Animal *animals[ANIMALS])
+static int	first_dog_occurence(Animal *animals[ANIMALS])
 {
 	Dog		*orig;
 	size_t	i;
@@ -81,6 +120,8 @@ static size_t	first_dog_occurence(Animal *animals[ANIMALS])
 	i = 0;
 	do
 	{
+		if (i > ANIMALS - 1)
+			return (-1);
 		orig = dynamic_cast<Dog *>(animals[i++]);
 	} while (nullptr == orig);
 

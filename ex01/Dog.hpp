@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:59:26 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 20:03:19 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 10:31:54 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ private:
 	mutable int		__next_idea;
 public:
 							void			makeSound				( void ) const;
-			const			std::string&	mostImportantThought	( void ) const;
+			const			std::string&	oneVeryImportantThought	( void ) const;
 							void			emptyMind				( void );
 	virtual	const			Animal&			operator =				( const Animal& to_copy );
 	virtual	const			Dog&			operator =				( const Dog& to_copy );
