@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 17:09:22 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 16:21:23 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:13:30 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	Cat::emptyMind( void )
 
 const Animal&	Cat::operator =	( const Animal& to_copy )
 {
+
+	print_line("Cat- Animal Copy assignment Operator", YELLOW);
+
 	const Cat	*as_cat = dynamic_cast<const Cat *>(&to_copy);
 
 	if (nullptr == as_cat)

@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 10:43:10 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:01:29 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,13 @@ int	main()
 	for (size_t i = 0; i < ANIMALS; i++)
 		delete animals[i];
 
+	{
+		const Animal*	j = new Dog();
+		const Animal*	i = new Cat();
+		delete j;//*should not create a leak
+		delete i;
+	}
+	std::cout << "main end" << std::endl;
 	return 0;
 }
 
