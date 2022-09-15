@@ -6,11 +6,20 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:41 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 19:10:12 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:21:22 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+
+void	Character::use(int idx, ICharacter& target)
+{
+	if (0 <= idx && idx <= MATERIAS - 1
+		&& nullptr != this->materias[idx])
+	{
+		this->materias[idx]->use(target);
+	}
+}
 
 void	Character::equip( AMateria* m )
 {

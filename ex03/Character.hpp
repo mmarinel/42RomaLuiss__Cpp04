@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:52 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 18:37:26 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:20:18 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ private:
 	AMateria			*materias[MATERIAS];
 	t_list				*__garbage;
 public:
+	virtual void		use(int idx, ICharacter& target);
 	virtual void 		equip( AMateria* m );
 	virtual void 		unequip(int idx);
 	AMateria*			getMateria( int idx );
