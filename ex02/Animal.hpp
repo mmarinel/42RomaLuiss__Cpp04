@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:26:22 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/12 16:28:18 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/15 11:23:54 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef ANIMAL_H
+#define ANIMAL_H
 
-# include "../colors.hpp"
 # include <string>
 # include <iostream>
+# include "utils.hpp"
 
-	//* utils
+class Animal
+{
+protected:
+	std::string	type;
+public:
+	virtual			void			makeSound	( void ) const = 0;
+			const	std::string&	getType		( void ) const;
+	virtual	const	Animal&			operator =	( const Animal& to_copy );
+									Animal		( const Animal& to_copy );
+									Animal		();
+	virtual							~Animal		();
+};
 
-void	print_line(const std::string& str, const char *color);//* Coercion Polymorphism happens here if we pass const char*
-void	print_funcName(const std::string& funcName);
 
-
-#endif /* COMMON_UTILS_H */
+#endif /* ANIMAL_H */

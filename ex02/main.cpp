@@ -6,44 +6,131 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/10 17:29:01 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:26:10 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
 #include <iostream>
 
-int	main( void )
+# define ANIMALS 4
+
+static int	first_dog_occurence(Animal *animals[ANIMALS]);
+//* end of static declarations
+
+int	main()
 {
-	FragTrap	usa("USA");
-	ScavTrap	russia("Rossija");
+	Animal	*animals[ANIMALS];
+	Dog		copy;
+	int		first_dog_occ;
 
+	for (size_t i = 0; i < ANIMALS; i++)
+		if (i % 2 == 0)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+
+//*********** Printing Animals ******************* //
+//*********************************************** //
+//*********************************************** //
+	for (size_t i = 0; i < ANIMALS; i++)
+	{
+		std::cout << YELLOW
+			<< "Animal " << i << " is a " << animals[i]->getType()
+			<< ": " << RESET;
+		animals[i]->makeSound();
+	}
 	std::cout << std::endl;
 
-	russia.beRepaired(usa.getAttackDamage());
-	usa.attack(russia.getName());
-	russia.takeDamage(usa.getAttackDamage());
-	russia.beRepaired(usa.getAttackDamage());
-	russia.beRepaired(100);
-	usa.attack(russia.getName());
-	russia.takeDamage(usa.getAttackDamage());
+//*********** Checking Deep Copy ******************* //
+//*********************************************** //
+//*********************************************** //
 
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	russia.attack(usa.getName());
-	usa.takeDamage(russia.getAttackDamage());
-	usa.attack(russia.getName());
+	first_dog_occ = first_dog_occurence(animals);
+	if (-1 != first_dog_occ)
+	{
+		copy = *animals[first_dog_occ];
+		std::cout
+			<< std::endl
+			<< CYAN
+			<< "Checking correctness of Deep Copy"
+			<< RESET;
 
-	std::cout << std::endl;
-	russia.guardGate();
-	std::cout << std::endl;
+		//* 	Original Values ******************//
+		// ************************************** //
+		// ************************************** //
+		std::cout << std::endl;
+		std::cout
+			<< "Orginal animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< dynamic_cast<Dog *>(
+				animals[first_dog_occ]
+				)->oneVeryImportantThought()
+			<< std::endl
+			<< RESET;
+		std::cout
+			<< "Copy animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< copy.oneVeryImportantThought()
+			<< RESET
+			<< std::endl;
+		std::cout << std::endl;
+
+		std::cout
+			<< CYAN
+			<< "Modifying the copy"
+			<< RESET;
+		copy.emptyMind();
+
+		//* 	Modified Values ******************//
+		// ************************************** //
+		// ************************************** //
+		std::cout << std::endl;
+		std::cout
+			<< "Orginal animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< dynamic_cast<Dog *>(
+				animals[first_dog_occ]
+				)->oneVeryImportantThought()
+			<< std::endl
+			<< RESET;
+		std::cout
+			<< "Copy animal:-> One Very Important Thought: "
+			<< YELLOW
+			<< copy.oneVeryImportantThought()
+			<< RESET
+			<< std::endl;
+		std::cout << std::endl;
+	}
+
+	for (size_t i = 0; i < ANIMALS; i++)
+		delete animals[i];
+
+	{
+		const Animal*	j = new Dog();
+		const Animal*	i = new Cat();
+		delete j;//*should not create a leak
+		delete i;
+	}
+	std::cout << "main end" << std::endl;
 	return 0;
+}
+
+static int	first_dog_occurence(Animal *animals[ANIMALS])
+{
+	Dog		*orig;
+	size_t	i;
+
+	i = 0;
+	do
+	{
+		if (i > ANIMALS - 1)
+			return (-1);
+		orig = dynamic_cast<Dog *>(animals[i++]);
+	} while (nullptr == orig);
+
+	return (i - 1);
 }

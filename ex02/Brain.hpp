@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.hpp                                          :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 12:26:22 by mmarinel         ###   ########.fr       */
+/*   Created: 2022/09/14 10:33:24 by mmarinel          #+#    #+#             */
+/*   Updated: 2022/09/14 18:29:52 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef BRAIN_H
+# define BRAIN_H
 
-# include "../colors.hpp"
+# define IDEAS_SIZE 100
+
 # include <string>
 # include <iostream>
+# include "utils.hpp"
 
-	//* utils
+class Brain
+{
+private:
+	std::string					ideas[IDEAS_SIZE];
+public:
+			const	Brain&			operator	= 	( const Brain& br );
+									Brain			( const Brain& br );
+									Brain			();
+	virtual							~Brain			();
+			const	std::string&	get_idea		( size_t idx ) const;
+					void			set_idea		( std::string idea, size_t idx );
+};
 
-void	print_line(const std::string& str, const char *color);//* Coercion Polymorphism happens here if we pass const char*
-void	print_funcName(const std::string& funcName);
 
-
-#endif /* COMMON_UTILS_H */
+#endif /* BRAIN_H */
