@@ -6,29 +6,32 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/11 11:19:41 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:57:56 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_UTILS_H
-#define COMMON_UTILS_H
+#ifndef UTILS_H
+# define UTILS_H
 
 # include "../colors.hpp"
+# include <string>
 # include <iostream>
 
 	//* utils
 
-void	print_line(const char *str, const char *color);
-void	print_funcName(const char *funcName);
+typedef struct s_list
+{
+	void			*content;
+	bool			del_content;
+	struct s_list	*tail;
+	struct s_list	*next;
+	void			add_back( void *content, bool del_content );
+					s_list( void *content, bool del_content );
+					~s_list();
+}	t_list;
 
-	//* Actions print utils
+void	print_line(const std::string& str, const char *color);//* Coercion Polymorphism happens here if we pass const char*
+void	print_funcName(const std::string& funcName);
 
-void	attack_print(const std::string clapName, const std::string target,
-				unsigned int damage);
-void	takeDamage_print(const std::string clapName, const unsigned int amount);
-void	beRepaired_print(const std::string clapName, const unsigned int amount);
-
-void	hpFail_print(const char *funcName, std::string clapName);
-void	epFail_print(const char *funcName, std::string clapName);
 
 #endif /* COMMON_UTILS_H */
