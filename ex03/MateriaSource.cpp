@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:49:40 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 11:03:42 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:23:11 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	MateriaSource::learnMateria( AMateria* materia )
 	if (nullptr != materia)
 	{
 		for (i = 0; i < MS_MATERIAS; i++)
-			if (nullptr != this->materias[i])
+			if (nullptr == this->materias[i])
 				break;
 
 		if (i < MS_MATERIAS)
