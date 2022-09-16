@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:41 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 17:57:11 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 18:59:29 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ static void	del_AMateria(void* materia);
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (0 <= idx && idx <= MATERIAS - 1
-		&& nullptr != this->materias[idx])
+	if (0 <= idx && idx <= MATERIAS - 1)
 	{
-		this->materias[idx]->use(target);
+		if (nullptr != this->materias[idx])
+			this->materias[idx]->use(target);
+		else
+			print_line("Unequipped Materia!", CYAN);
 	}
 }
 
