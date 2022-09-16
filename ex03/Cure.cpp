@@ -35,7 +35,7 @@ const Cure&	Cure::operator = ( const Cure& to_copy )
 	return (*this);
 }
 
-Cure::Cure( const Cure& to_copy ) : AMateria("Cure")
+Cure::Cure( const Cure& to_copy ) : AMateria(to_copy.type)
 {
 	print_line("Cure- Copy Constructor", BOLDGREEN);
 

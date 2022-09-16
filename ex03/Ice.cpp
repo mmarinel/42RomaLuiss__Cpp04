@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:55:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 15:35:07 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 09:23:04 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ const Ice&	Ice::operator = ( const Ice& to_copy )
 	return (*this);
 }
 
-Ice::Ice( const Ice& to_copy ) : AMateria("ice")
+Ice::Ice( const Ice& to_copy ) : AMateria(to_copy.type)
 {
 	print_line("Ice- Copy Constructor", BOLDGREEN);
 
@@ -44,7 +44,7 @@ Ice::Ice( const Ice& to_copy ) : AMateria("ice")
 
 Ice::Ice() : AMateria("ice")
 {
-	print_line("Ice- Default Constructor", YELLOW);
+	print_line("Ice- Default Constructor", BOLDGREEN);
 }
 
 Ice::~Ice()

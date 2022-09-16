@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:41 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 19:21:22 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 09:40:04 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ void	Character::unequip( int idx )
 
 const Character&	Character::operator =	( const Character& to_copy )
 {
-	print_line("Character- Copy Constructor", YELLOW);
+	print_line("Character- Copy Assignment Operator", YELLOW);
 
-	this->__garbage = nullptr;
+	garbage_collector();
+	this->name.assign(to_copy.name);
 	for (size_t i = 0; i < MATERIAS; i++)
 	{
-		dele_previous: {
+		del_previous: {
 			if (nullptr != this->materias[i])
 				delete this->materias[i];
 		}
@@ -68,7 +69,7 @@ const Character&	Character::operator =	( const Character& to_copy )
 	return (*this);
 }
 
-Character::Character( const Character& to_copy )
+Character::Character( const Character& to_copy ) : name(to_copy.name)
 {
 	print_line("Character- Copy Constructor", BOLDGREEN);
 
@@ -98,9 +99,13 @@ Character::~Character()
 	for (size_t i = 0; i < MATERIAS; i++)
 		if (nullptr != this->materias[i])
 			delete this->materias[i];
-	garbage_collector: {
-		if (nullptr != this->__garbage)
-			delete this->__garbage;
-	}
+	garbage_collector();
 	print_line("<<Character Destroyed>>", BOLDRED);
+}
+
+void	Character::garbage_collector( void )
+{
+	if (nullptr != this->__garbage)
+		delete this->__garbage;
+	this->__garbage = nullptr;
 }

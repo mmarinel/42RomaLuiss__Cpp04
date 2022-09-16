@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:52 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 19:20:18 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 09:39:43 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 class Character : public ICharacter
 {
 private:
-	const std::string	name;
-	AMateria			*materias[MATERIAS];
-	t_list				*__garbage;
+	std::string	name;
+	AMateria	*materias[MATERIAS];
+	t_list		*__garbage;
+	void		garbage_collector( void );
 public:
 	virtual void		use(int idx, ICharacter& target);
 	virtual void 		equip( AMateria* m );

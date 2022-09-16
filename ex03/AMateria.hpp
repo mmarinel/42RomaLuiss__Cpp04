@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:09:28 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 18:32:04 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 09:13:18 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ protected:
 	const std::string	type;
 public:
 			std::string const &	getType() const;//* Returns the materia type
-	virtual void				use( ICharacter& target );
-	virtual AMateria*			clone() const = 0;
-								AMateria( std::string const & type );
-								AMateria();
-	virtual						~AMateria();
+	virtual	void				use			( ICharacter& target );
+	virtual	AMateria*			clone() const = 0;
+	const	AMateria&			operator =	( const AMateria& to_copy );
+								AMateria	( AMateria const & to_copy );
+								AMateria	( std::string const & type );
+								AMateria	();
+	virtual						~AMateria	();
 };
 
 
