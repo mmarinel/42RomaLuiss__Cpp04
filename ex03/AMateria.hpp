@@ -6,13 +6,14 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:09:28 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 09:13:18 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:50:24 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_H
 # define AMATERIA_H
 
+# include "types.hpp"
 # include "ICharacter.hpp"
 # include "utils.hpp"
 

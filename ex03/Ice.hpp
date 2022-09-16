@@ -6,13 +6,14 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:44:29 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 15:31:52 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:50:40 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ICE_H
 # define ICE_H
 
+# include "types.hpp"
 # include "AMateria.hpp"
 
 # include <string>

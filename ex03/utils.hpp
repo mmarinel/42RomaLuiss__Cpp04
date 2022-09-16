@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 15:37:43 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/15 18:57:56 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:08:20 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ typedef struct s_list
 {
 	void			*content;
 	bool			del_content;
+	void			(*del_cont)(void *content);
 	struct s_list	*tail;
 	struct s_list	*next;
 	void			add_back( void *content, bool del_content );
-					s_list( void *content, bool del_content );
+					s_list( void *content, bool del_content, void (*del_cont)(void *content) );
 					~s_list();
 }	t_list;
 

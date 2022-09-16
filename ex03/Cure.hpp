@@ -13,6 +13,7 @@
 #ifndef CURE_H
 # define CURE_H
 
+# include "types.hpp"
 # include "AMateria.hpp"
 
 # include <string>

@@ -28,12 +28,15 @@ AMateria*	Cure::clone( void ) const
 	return (copy);
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 const Cure&	Cure::operator = ( const Cure& to_copy )
 {
 	print_line("Cure- Copy Assignment Operator", YELLOW);
 
 	return (*this);
 }
+#pragma GCC diagnostic pop
 
 Cure::Cure( const Cure& to_copy ) : AMateria(to_copy.type)
 {

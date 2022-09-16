@@ -6,18 +6,21 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 12:20:54 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 09:20:34 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:00:54 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 const AMateria&	AMateria::operator = ( const AMateria& to_copy )
 {
 	print_line("AMateria: Copy Assignment Operator", YELLOW);
 
 	return (*this);
 }
+#pragma GCC diagnostic pop
 
 AMateria::AMateria	( AMateria const & to_copy ) : type(to_copy.type)
 {

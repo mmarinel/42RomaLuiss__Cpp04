@@ -6,11 +6,14 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:41 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 09:40:04 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 11:18:24 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+
+static void	del_AMateria(void* materia);
+//* end of static declaration
 
 void	Character::use(int idx, ICharacter& target)
 {
@@ -41,13 +44,15 @@ void	Character::unequip( int idx )
 		&& nullptr != this->materias[idx])
 	{
 		if (nullptr == this->__garbage)
-			this->__garbage = new t_list(this->materias[idx], true);
+			this->__garbage = new t_list(this->materias[idx], true, del_AMateria);
 		else
 			this->__garbage->add_back(this->materias[idx], true);
 		this->materias[idx] = nullptr;
 	}
 }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-label"
 const Character&	Character::operator =	( const Character& to_copy )
 {
 	print_line("Character- Copy Assignment Operator", YELLOW);
@@ -68,6 +73,7 @@ const Character&	Character::operator =	( const Character& to_copy )
 
 	return (*this);
 }
+#pragma GCC diagnostic pop
 
 Character::Character( const Character& to_copy ) : name(to_copy.name)
 {
@@ -108,4 +114,17 @@ void	Character::garbage_collector( void )
 	if (nullptr != this->__garbage)
 		delete this->__garbage;
 	this->__garbage = nullptr;
+}
+
+const std::string&	Character::getName( void ) const
+{
+	return (this->name);
+}
+
+static void	del_AMateria(void* materia)
+{
+	AMateria*	as_materia = static_cast<AMateria*>(materia);
+
+	if (nullptr != as_materia)
+		delete as_materia;
 }
