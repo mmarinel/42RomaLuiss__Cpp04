@@ -15,7 +15,7 @@
 void	Cure::use( ICharacter& target )
 {
 	std::cout
-		<< YELLOW
+		<< CYAN
 		<< "* heals " << target.getName() << "'s wounds *"
 		<< RESET
 		<< std::endl;
@@ -23,6 +23,8 @@ void	Cure::use( ICharacter& target )
 
 AMateria*	Cure::clone( void ) const
 {
+	print_line("Cure- clone", YELLOW);
+
 	Cure*	copy = new Cure();
 
 	return (copy);
@@ -45,9 +47,9 @@ Cure::Cure( const Cure& to_copy ) : AMateria(to_copy.type)
 	*this = to_copy;
 }
 
-Cure::Cure() : AMateria("Cure")
+Cure::Cure() : AMateria("cure")
 {
-	print_line("Cure- Default Constructor", YELLOW);
+	print_line("Cure- Default Constructor", BOLDGREEN);
 }
 
 Cure::~Cure()

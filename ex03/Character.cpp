@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:41 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 11:18:24 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 17:57:11 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	Character::equip( AMateria* m )
 
 	if (i < MATERIAS)
 	{
-		this->materias[i] = m->clone();
+		if (nullptr != m)
+			this->materias[i] = m->clone();
 	}
 }
 
