@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 14:44:14 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 19:14:32 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/16 20:05:16 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int	main( void )
 		clone.unequip(3);
 		std::cout << CYAN << "me: " << RESET; me->use(1, *boredom);
 		std::cout << CYAN << "clone: " << RESET; clone.use(1, *boredom);
+
+		std::cout << std::endl << BOLDWHITE
+			<< "overwriting original with copy...must have no leaks!" << RESET
+			<< std::endl;
+		*me = clone;
 
 		std::cout << std::endl;
 		delete me;
