@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:28:18 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/14 11:54:48 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/17 09:51:50 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class WrongAnimal
 protected:
 	std::string	type;
 public:
-	virtual			void			makeSound		( void ) const;
+					void			makeSound		( void ) const;
 			const	std::string&	getType			( void ) const;
 			const	WrongAnimal&	operator =		( const WrongAnimal& to_copy );
 									WrongAnimal		(const WrongAnimal& to_copy );
