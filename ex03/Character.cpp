@@ -6,7 +6,7 @@
 /*   By: mmarinel <mmarinel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:50:41 by mmarinel          #+#    #+#             */
-/*   Updated: 2022/09/16 18:59:29 by mmarinel         ###   ########.fr       */
+/*   Updated: 2022/09/17 09:36:18 by mmarinel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ void	Character::equip( AMateria* m )
 {
 	size_t	i;
 
-	for (i = 0; i < MATERIAS; i++)
-		if (nullptr == this->materias[i])
-			break ;
-
-	if (i < MATERIAS)
+	if (nullptr != m)
 	{
-		if (nullptr != m)
+		for (i = 0; i < MATERIAS; i++)
+			if (nullptr == this->materias[i])
+				break ;
+
+		if (i < MATERIAS)
+		{
 			this->materias[i] = m->clone();
+		}
 	}
 }
 
@@ -78,7 +80,7 @@ const Character&	Character::operator =	( const Character& to_copy )
 }
 #pragma GCC diagnostic pop
 
-Character::Character( const Character& to_copy ) : name(to_copy.name)
+Character::Character( const Character& to_copy )
 {
 	print_line("Character- Copy Constructor", BOLDGREEN);
 
